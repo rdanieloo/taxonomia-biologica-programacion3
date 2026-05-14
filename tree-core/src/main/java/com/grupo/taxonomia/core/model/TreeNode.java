@@ -1,24 +1,23 @@
 package com.grupo.taxonomia.core.model;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TreeNode {
 
-    private String id;
+    private Long id;
     private String value;
     private TreeNode parent;
     private List<TreeNode> children = new ArrayList<>();
 
-    public TreeNode() {
-    }
-
-    public TreeNode(String id, String value) {
+    public TreeNode(Long id, String value, TreeNode parent) {
         this.id = id;
         this.value = value;
+        this.parent = parent;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -32,14 +31,5 @@ public class TreeNode {
 
     public List<TreeNode> getChildren() {
         return children;
-    }
-
-    public void setParent(TreeNode parent) {
-        this.parent = parent;
-    }
-
-    public void addChild(TreeNode child) {
-        child.setParent(this);
-        this.children.add(child);
     }
 }
