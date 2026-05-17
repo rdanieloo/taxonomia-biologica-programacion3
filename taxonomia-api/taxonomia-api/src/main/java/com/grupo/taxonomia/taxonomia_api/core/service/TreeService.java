@@ -6,17 +6,23 @@ import com.grupo.taxonomia.core.repository.TreeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import com.grupo.taxonomia.core.model.strategy.TreeAlgorithmStrategy;
 
 @Service
 public class TreeService {
 
     private final TreeRepository repo;
+    private final TreeAlgorithmStrategy strategy;
 
-    public TreeService(TreeRepository repo) {
+    public TreeService(
+            TreeRepository repo,
+            TreeAlgorithmStrategy strategy
+    ) {
         this.repo = repo;
+        this.strategy = strategy;
     }
-
     
+
     public TreeNodeDTO createRoot(String value) {
         TreeNode node = repo.createRoot(value);
         return toDTO(node);

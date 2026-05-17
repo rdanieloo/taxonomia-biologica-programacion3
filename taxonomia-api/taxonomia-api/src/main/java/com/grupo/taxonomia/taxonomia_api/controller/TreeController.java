@@ -14,19 +14,15 @@ public class TreeController {
         this.service = service;
     }
 
-    @GetMapping("/root")
+    @PostMapping("/root")
     public TreeNodeDTO createRoot(@RequestParam String value) {
         return service.createRoot(value);
     }
 
-    @GetMapping("/{parentId}/children")
+    @PostMapping("/{parentId}/children")
     public TreeNodeDTO addChild(@PathVariable Long parentId,
                                  @RequestParam String value) {
         return service.addChild(parentId, value);
     }
 
-    @GetMapping("/tree")
-    public TreeNodeDTO getTree() {
-        return service.getTree();
-    }
 }

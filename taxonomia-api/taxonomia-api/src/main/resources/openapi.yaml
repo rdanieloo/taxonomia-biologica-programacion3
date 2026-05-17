@@ -1,4 +1,5 @@
 openapi: 3.0.3
+
 info:
   title: Taxonomía Biológica API
   version: 1.0.0
@@ -31,16 +32,18 @@ paths:
           required: true
           schema:
             type: integer
+
         - name: value
           in: query
           required: true
           schema:
             type: string
+
       responses:
         "200":
           description: Nodo hijo agregado
 
-  /nodes/tree:
+  /tree:
     get:
       summary: Obtener árbol completo
       responses:
