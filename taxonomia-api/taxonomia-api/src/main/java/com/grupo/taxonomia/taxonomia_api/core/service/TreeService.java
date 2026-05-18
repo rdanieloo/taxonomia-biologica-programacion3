@@ -4,9 +4,11 @@ import com.grupo.taxonomia.core.model.TreeNode;
 import com.grupo.taxonomia.core.model.TreeNodeDTO;
 import com.grupo.taxonomia.core.repository.TreeRepository;
 import org.springframework.stereotype.Service;
+import com.grupo.taxonomia.core.model.strategy.TreeAlgorithmStrategy;
+
 
 import java.util.List;
-import com.grupo.taxonomia.core.model.strategy.TreeAlgorithmStrategy;
+
 
 @Service
 public class TreeService {
@@ -20,6 +22,29 @@ public class TreeService {
     ) {
         this.repo = repo;
         this.strategy = strategy;
+    }
+    public List<TreeNodeDTO> dfsTraversal() {
+
+        return strategy.dfs(repo.getTree())
+                .stream()
+                .map(this::toDTO)
+                .toList();
+    }
+    
+    public List<TreeNodeDTO> bfsTraversal() {
+
+        return strategy.bfs(repo.getTree())
+                .stream()
+                .map(this::toDTO)
+                .toList();
+    }
+    
+    public int getHeight() {
+        return strategy.calculateHeight(repo.getTree());
+    }
+    
+    public boolean validateTree() {
+        return strategy.validateNoCycles(repo.getTree());
     }
     
 
