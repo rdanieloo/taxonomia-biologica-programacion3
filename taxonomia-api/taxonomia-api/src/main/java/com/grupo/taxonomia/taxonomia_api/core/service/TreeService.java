@@ -47,7 +47,33 @@ public class TreeService {
         return strategy.validateNoCycles(repo.getTree());
     }
     
+    public int getDepth(Long nodeId) {
+        return strategy.calculateDepth(repo.getTree(), nodeId);
+    }
+    
+    public List<TreeNodeDTO> getAncestors(Long nodeId) {
 
+        return strategy.getAncestors(repo.getTree(), nodeId)
+                .stream()
+                .map(this::toDTO)
+                .toList();
+    }
+    public TreeNodeDTO getSubtree(Long nodeId) {
+
+        TreeNode subtree =
+                strategy.getSubtree(repo.getTree(), nodeId);
+
+        return toDTO(subtree);
+    }
+    public List<TreeNodeDTO> getPathToNode(Long nodeId) {
+
+        return strategy.getPathToNode(repo.getTree(), nodeId)
+                .stream()
+                .map(this::toDTO)
+                .toList();
+    }
+    
+    
     public TreeNodeDTO createRoot(String value) {
         TreeNode node = repo.createRoot(value);
         return toDTO(node);

@@ -106,8 +106,155 @@ public class CustomTreeStrategy implements TreeAlgorithmStrategy {
 	            return false;
 	        }
 	    }
+	        return true;
+	    }
+	    @Override
+	    public int calculateDepth(TreeNode root, Long nodeId) {
 
-	    return true;
-	}
-}
+	        return depthRecursive(root, nodeId, 0);
+	    }
 
+	    private int depthRecursive(TreeNode node,
+	                               Long nodeId,
+	                               int currentDepth) {
+
+	        if (node == null) {
+	            return -1;
+	        }
+
+	        if (node.getId().equals(nodeId)) {
+	            return currentDepth;
+	        }
+
+	        for (TreeNode child : node.getChildren()) {
+
+	            int result = depthRecursive(
+	                    child,
+	                    nodeId,
+	                    currentDepth + 1
+	            );
+
+	            if (result != -1) {
+	                return result;
+	            }
+	        }
+
+	        return -1;
+	    }
+	    
+	    @Override
+	    public List<TreeNode> getAncestors(TreeNode root,
+	                                       Long nodeId) {
+
+	        List<TreeNode> ancestors = new ArrayList<>();
+
+	        findAncestors(root, nodeId, ancestors);
+
+	        return ancestors;
+	    }
+
+	    private boolean findAncestors(TreeNode node,
+	                                  Long nodeId,
+	                                  List<TreeNode> ancestors) {
+
+	        if (node == null) {
+	            return false;
+	        }
+
+	        if (node.getId().equals(nodeId)) {
+	            return true;
+	        }
+
+	        for (TreeNode child : node.getChildren()) {
+
+	            boolean found = findAncestors(
+	                    child,
+	                    nodeId,
+	                    ancestors
+	            );
+
+	            if (found) {
+
+	                ancestors.add(node);
+
+	                return true;
+	            }
+	        }
+
+	        return false;
+	    }
+	    
+	    @Override
+	    public TreeNode getSubtree(TreeNode root,
+	                               Long nodeId) {
+
+	        return findSubtree(root, nodeId);
+	    }
+
+	    private TreeNode findSubtree(TreeNode node,
+	                                 Long nodeId) {
+
+	        if (node == null) {
+	            return null;
+	        }
+
+	        if (node.getId().equals(nodeId)) {
+	            return node;
+	        }
+
+	        for (TreeNode child : node.getChildren()) {
+
+	            TreeNode result = findSubtree(child, nodeId);
+
+	            if (result != null) {
+	                return result;
+	            }
+	        }
+
+	        return null;
+	    }
+	    
+	    @Override
+	    public List<TreeNode> getPathToNode(TreeNode root,
+	                                        Long nodeId) {
+
+	        List<TreeNode> path = new ArrayList<>();
+
+	        findPath(root, nodeId, path);
+
+	        return path;
+	    }
+
+	    private boolean findPath(TreeNode node,
+	                             Long nodeId,
+	                             List<TreeNode> path) {
+
+	        if (node == null) {
+	            return false;
+	        }
+
+	        path.add(node);
+
+	        if (node.getId().equals(nodeId)) {
+	            return true;
+	        }
+
+	        for (TreeNode child : node.getChildren()) {
+
+	            boolean found = findPath(
+	                    child,
+	                    nodeId,
+	                    path
+	            );
+
+	            if (found) {
+	                return true;
+	            }
+	        }
+
+	        path.remove(path.size() - 1);
+
+	        return false;
+	    }
+	} 
+	

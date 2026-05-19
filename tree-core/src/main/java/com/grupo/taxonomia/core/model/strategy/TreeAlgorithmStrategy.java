@@ -13,4 +13,11 @@ public interface TreeAlgorithmStrategy {
 
     boolean validateNoCycles(TreeNode root);
 
+    int calculateDepth(TreeNode root, Long nodeId);
+    
+    List<TreeNode> getAncestors(TreeNode root, Long nodeId);
+    
+    TreeNode getSubtree(TreeNode root, Long nodeId);
+    
+    List<TreeNode> getPathToNode(TreeNode root, Long nodeId);
 }
