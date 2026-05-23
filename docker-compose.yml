@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+  # 1. Base de Datos Relacional (PostgreSQL)
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: postgres-container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: umg_user
+      POSTGRES_PASSWORD: umg_password
+      POSTGRES_DB: taxonomia_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    profiles:
+      - default
+      - full
+
+  # 2. Base de Datos de Grafos (Neo4j)
+  neo4j-db:
+    image: neo4j:5.12-community
+    container_name: neo4j-container
+    ports:
+      - "7474:7474" # Interfaz Web
+      - "7687:7687" # Protocolo Bolt
+    environment:
+      NEO4J_AUTH: neo4j/umg_password123
+    volumes:
+      - neo4jdata:/data
+    profiles:
+      - default
+      - full
+
+  # 3. Aplicación Backend (Spring Boot Completo)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-backend-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres-db:
+        condition: service_started
+      neo4j-db:
+        condition: service_started
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - APP_TREE_STRATEGY=${APP_TREE_STRATEGY:-collections}
+      - APP_STORAGE=${APP_STORAGE:-postgres}
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/taxonomia_db
+      - SPRING_DATASOURCE_USERNAME=umg_user
+      - SPRING_DATASOURCE_PASSWORD=umg_password
+      - SPRING_NEO4J_URI=bolt://neo4j-db:7687
+      - SPRING_NEO4J_AUTHENTICATION_USERNAME=neo4j
+      - SPRING_NEO4J_AUTHENTICATION_PASSWORD=umg_password123
+    profiles:
+      - default
+      - full
+
+  # 4. Modo Memoria Aislado (Solo levanta la App, sin encender bases de datos)
+  app-memory:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-backend-memory
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - APP_TREE_STRATEGY=collections
+      - APP_STORAGE=memory
+    profiles:
+      - memory
+
+volumes:
+  pgdata:
+  neo4jdata:
