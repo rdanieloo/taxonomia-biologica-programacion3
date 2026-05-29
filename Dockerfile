@@ -11,7 +11,7 @@ COPY tree-core ./tree-core
 RUN mvn clean package -DskipTests
 
 # === ETAPA 2: Entorno de ejecución ===
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 
 # Copiar el .jar generado desde la etapa de compilación
