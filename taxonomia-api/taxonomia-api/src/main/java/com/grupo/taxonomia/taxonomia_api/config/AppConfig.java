@@ -1,7 +1,10 @@
 package com.grupo.taxonomia.taxonomia_api.config;
 
+import com.grupo.taxonomia.core.model.strategy.TreeAlgorithmStrategy;
+import com.grupo.taxonomia.core.model.strategy.custom.CustomTreeStrategy;
 import com.grupo.taxonomia.core.repository.TreeRepository;
 import com.grupo.taxonomia.core.repository.memory.MemoryTreeRepository;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,7 +12,14 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
+    @ConditionalOnProperty(name = "app.storage", havingValue = "memory", matchIfMissing = true)
     public TreeRepository treeRepository() {
         return new MemoryTreeRepository();
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = "app.tree-strategy", havingValue = "custom", matchIfMissing = true)
+    public TreeAlgorithmStrategy treeAlgorithmStrategy() {
+        return new CustomTreeStrategy();
     }
 }
