@@ -21,9 +21,12 @@
 
 	<properties>
 		<java.version>17</java.version>
+<<<<<<< HEAD
 
 		<springdoc.version>2.5.0</springdoc.version>
 		<openapi-generator.version>7.6.0</openapi-generator.version>
+=======
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
 	</properties>
 
 	<dependencies>
@@ -34,6 +37,7 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-neo4j</artifactId>
@@ -44,17 +48,22 @@
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 
+=======
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
+=======
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -68,6 +77,7 @@
 			<artifactId>tree-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+<<<<<<< HEAD
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -145,11 +155,36 @@
 			</plugin>
 
 			
+=======
+		
+<<<<<<<< HEAD:taxonomia-api/taxonomia-api/pom.xml
+			<!-- MongoDB - Rol C -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
+	</dependencies>
+========
+		<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.5.0</version>
+</dependency>
+</dependencies>
+>>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091:taxonomia-api/pom.xml
+
+	<build>
+		<plugins>
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
 		</plugins>
 	</build>
 

@@ -90,6 +90,7 @@ public class TreeService {
         return toDTO(repo.getTree());
     }
 
+<<<<<<< HEAD
     public boolean deleteNode(Long nodeId) {
         return repo.deleteNode(nodeId);
     }
@@ -98,6 +99,9 @@ public class TreeService {
         return repo.updateNode(nodeId, newValue);
     }
 
+=======
+    
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
     private TreeNodeDTO toDTO(TreeNode node) {
 
         if (node == null) return null;

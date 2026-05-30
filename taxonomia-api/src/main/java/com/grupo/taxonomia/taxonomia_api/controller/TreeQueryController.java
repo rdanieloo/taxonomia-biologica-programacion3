@@ -1,5 +1,6 @@
 package com.grupo.taxonomia.taxonomia_api.controller;
 
+<<<<<<< HEAD
 import com.grupo.taxonomia.openapi.api.NodesApi;
 import com.grupo.taxonomia.openapi.api.TraversalApi;
 import com.grupo.taxonomia.openapi.api.TreeApi;
@@ -17,6 +18,18 @@ import java.util.Optional;
 
 @RestController
 public class TreeQueryController implements TreeApi, NodesApi, TraversalApi {
+=======
+import com.grupo.taxonomia.core.model.TreeNodeDTO;
+import com.grupo.taxonomia.taxonomia_api.core.service.TreeService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
+
+@RestController
+public class TreeQueryController {
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
 
     private final TreeService service;
 
@@ -24,6 +37,7 @@ public class TreeQueryController implements TreeApi, NodesApi, TraversalApi {
         this.service = service;
     }
 
+<<<<<<< HEAD
     // Necesario porque las 3 interfaces tienen getRequest() por default
     // y Java no puede resolver el conflicto solo
     @Override
@@ -113,3 +127,55 @@ public class TreeQueryController implements TreeApi, NodesApi, TraversalApi {
         return ResponseEntity.ok(service.updateNode(nodeId, value));
     }
 }
+=======
+    @GetMapping("/tree")
+    public TreeNodeDTO getTree() {
+        return service.getTree();
+    }
+    
+    @GetMapping("/traversal/dfs")
+    public List<TreeNodeDTO> dfsTraversal() {
+        return service.dfsTraversal();
+    }
+    
+    @GetMapping("/traversal/bfs")
+    public List<TreeNodeDTO> bfsTraversal() {
+        return service.bfsTraversal();
+    }
+    
+    @GetMapping("/height")
+    public int getHeight() {
+        return service.getHeight();
+    }
+    
+    @GetMapping("/validate")
+    public boolean validateTree() {
+        return service.validateTree();
+    }
+    
+    @GetMapping("/nodes/{nodeId}/depth")
+    public int getDepth(@PathVariable Long nodeId) {
+        return service.getDepth(nodeId);
+    }
+    
+    @GetMapping("/nodes/{nodeId}/ancestors")
+    public List<TreeNodeDTO> getAncestors(
+            @PathVariable Long nodeId) {
+
+        return service.getAncestors(nodeId);
+    }
+    @GetMapping("/tree/{nodeId}")
+    public TreeNodeDTO getSubtree(
+            @PathVariable Long nodeId) {
+
+        return service.getSubtree(nodeId);
+    }
+    
+    @GetMapping("/nodes/{nodeId}/path")
+    public List<TreeNodeDTO> getPathToNode(
+            @PathVariable Long nodeId) {
+
+        return service.getPathToNode(nodeId);
+    }
+}
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091

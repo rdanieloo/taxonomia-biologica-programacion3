@@ -1,13 +1,20 @@
 openapi: 3.0.3
 
 info:
+<<<<<<< HEAD
   title: Taxonomia Biologica API
   version: 1.0.0
   description: API para gestionar un arbol de taxonomia biologica en memoria
+=======
+  title: Taxonomía Biológica API
+  version: 1.0.0
+  description: API para gestionar un árbol de taxonomía biológica en memoria
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
 
 servers:
   - url: http://localhost:8084
 
+<<<<<<< HEAD
 tags:
   - name: tree
     description: Recorridos y consultas del arbol
@@ -18,21 +25,28 @@ tags:
   - name: traversal
     description: Recorridos DFS y BFS del arbol
 
+=======
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
 paths:
 
   /nodes/root:
     post:
+<<<<<<< HEAD
       tags:
         - nodes
       summary: Crear nodo raiz
       operationId: createRoot
 
+=======
+      summary: Crear nodo raíz
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
       parameters:
         - name: value
           in: query
           required: true
           schema:
             type: string
+<<<<<<< HEAD
 
       responses:
         "200":
@@ -49,13 +63,25 @@ paths:
       summary: Agregar nodo hijo
       operationId: addChild
 
+=======
+      responses:
+        "200":
+          description: Nodo raíz creado
+
+  /nodes/{parentId}/children:
+    post:
+      summary: Agregar nodo hijo
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
       parameters:
         - name: parentId
           in: path
           required: true
           schema:
             type: integer
+<<<<<<< HEAD
             format: int64
+=======
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
 
         - name: value
           in: query
@@ -66,6 +92,7 @@ paths:
       responses:
         "200":
           description: Nodo hijo agregado
+<<<<<<< HEAD
           content:
             application/json:
               schema:
@@ -342,3 +369,12 @@ components:
 
           items:
             $ref: '#/components/schemas/TreeNodeDTO'
+=======
+
+  /tree:
+    get:
+      summary: Obtener árbol completo
+      responses:
+        "200":
+          description: Árbol completo en memoria
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091

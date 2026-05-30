@@ -1,5 +1,6 @@
 package com.grupo.taxonomia.taxonomia_api.config;
 
+<<<<<<< HEAD
 import com.grupo.taxonomia.core.model.strategy.TreeAlgorithmStrategy;
 import com.grupo.taxonomia.core.model.strategy.collections.CollectionsTreeStrategy;
 import com.grupo.taxonomia.core.model.strategy.custom.CustomTreeStrategy;
@@ -60,3 +61,43 @@ public class AppConfig {
         return strategy;
     }
 }
+=======
+import com.grupo.taxonomia.core.repository.TreeRepository;
+
+import com.grupo.taxonomia.core.repository.memory.MemoryTreeRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import com.grupo.taxonomia.core.model.strategy.TreeAlgorithmStrategy;
+import com.grupo.taxonomia.core.model.strategy.custom.CustomTreeStrategy;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+	
+	
+    @Bean
+    
+    @ConditionalOnProperty(
+            name = "app.tree-strategy",
+            havingValue = "custom"
+    )
+    
+    
+    public TreeRepository treeRepository() {
+        return new MemoryTreeRepository();
+    }
+    
+    @Bean
+    @ConditionalOnProperty(
+            name = "app.tree-strategy",
+            havingValue = "custom"
+    )
+    public TreeAlgorithmStrategy treeAlgorithmStrategy() {
+        return new CustomTreeStrategy();
+    }
+}
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
