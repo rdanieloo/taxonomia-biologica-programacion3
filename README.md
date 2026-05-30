@@ -294,25 +294,6 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software...
 ```
 
----
-
-## ✉️ Contacto y Soporte
-
-Para dudas o soporte técnico:
-
-- 📧 **Email**: equipo@ejemplo.com
-- 💬 **Discussiones**: [GitHub Discussions](../../discussions)
-- 🐛 **Reportar Bug**: [GitHub Issues](../../issues)
-
----
-
-## 🙏 Agradecimientos
-
-- Profesor/a de Programación III
-- Equipo académico de la institución
-- Comunidad de desarrolladores que contribuyeron con ideas
-
----
 
 ## 📊 Estado del Proyecto
 
