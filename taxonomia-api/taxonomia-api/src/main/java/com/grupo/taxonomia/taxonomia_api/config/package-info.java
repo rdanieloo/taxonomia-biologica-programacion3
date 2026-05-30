@@ -1,1 +1,0 @@
-package com.grupo.taxonomia.taxonomia_api.config;
