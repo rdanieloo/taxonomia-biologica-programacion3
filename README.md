@@ -310,16 +310,6 @@ copies of the Software...
 | Documentación | ✅ Completado | Estudiante 4 |
 | Interfaz | ✅ Completado | Estudiante 3 |
 
----
 
-**Última actualización**: Mayo 2024  
-**Versión**: 1.0.0  
-**Mantenedores**: Equipo de Programación III
 
----
 
-<div align="center">
-
-⭐ Si este proyecto te fue útil, considera darle una estrella ⭐
-
-</div>
