@@ -1,0 +1,344 @@
+openapi: 3.0.3
+
+info:
+  title: Taxonomia Biologica API
+  version: 1.0.0
+  description: API para gestionar un arbol de taxonomia biologica en memoria
+
+servers:
+  - url: http://localhost:8084
+
+tags:
+  - name: tree
+    description: Recorridos y consultas del arbol
+
+  - name: nodes
+    description: Operaciones sobre nodos
+
+  - name: traversal
+    description: Recorridos DFS y BFS del arbol
+
+paths:
+
+  /nodes/root:
+    post:
+      tags:
+        - nodes
+      summary: Crear nodo raiz
+      operationId: createRoot
+
+      parameters:
+        - name: value
+          in: query
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: Nodo raiz creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TreeNodeDTO'
+
+  /nodes/{parentId}/children:
+    post:
+      tags:
+        - nodes
+      summary: Agregar nodo hijo
+      operationId: addChild
+
+      parameters:
+        - name: parentId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+        - name: value
+          in: query
+          required: true
+          schema:
+            type: string
+
+      responses:
+        "200":
+          description: Nodo hijo agregado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TreeNodeDTO'
+
+  /tree:
+    get:
+      tags:
+        - tree
+      summary: Obtener arbol completo
+      operationId: getTree
+
+      responses:
+        "200":
+          description: Arbol completo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TreeNodeDTO'
+
+  /tree/node/{nodeId}:
+    get:
+      tags:
+        - tree
+      summary: Obtener subarbol
+      operationId: getSubtree
+
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        "200":
+          description: Subarbol encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TreeNodeDTO'
+
+  /tree/height:
+    get:
+      tags:
+        - tree
+      summary: Obtener altura del arbol
+      operationId: getHeight
+
+      responses:
+        "200":
+          description: Altura calculada
+          content:
+            application/json:
+              schema:
+                type: integer
+
+  /tree/validate:
+    get:
+      tags:
+        - tree
+      summary: Validar ciclos
+      operationId: validateTree
+
+      responses:
+        "200":
+          description: Resultado validacion
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /nodes/{nodeId}/depth:
+    get:
+      tags:
+        - nodes
+      summary: Obtener profundidad del nodo
+      operationId: getDepth
+
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        "200":
+          description: Profundidad encontrada
+          content:
+            application/json:
+              schema:
+                type: integer
+
+  /nodes/{nodeId}/ancestors:
+    get:
+      tags:
+        - nodes
+      summary: Obtener ancestros
+      operationId: getAncestors
+
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        "200":
+          description: Lista de ancestros
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TreeNodeDTO'
+
+  /nodes/{nodeId}/path:
+    get:
+      tags:
+        - nodes
+      summary: Ruta desde la raiz al nodo
+      operationId: getPathToNode
+
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        "200":
+          description: Ruta encontrada
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TreeNodeDTO'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+  /nodes/{nodeId}:
+    delete:
+      tags:
+        - nodes
+      summary: Eliminar nodo y su subarbol
+      operationId: deleteNode
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: Nodo eliminado
+        "404":
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - nodes
+      summary: Actualizar valor de un nodo
+      operationId: updateNode
+      parameters:
+        - name: nodeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: value
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 1
+      responses:
+        "200":
+          description: Nodo actualizado
+          content:
+            application/json:
+              schema:
+                type: boolean
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+  /traversal/dfs:
+    get:
+      tags:
+        - traversal
+      summary: Recorrido DFS
+      operationId: dfsTraversal
+
+      responses:
+        "200":
+          description: Recorrido DFS
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TreeNodeDTO'
+
+  /traversal/bfs:
+    get:
+      tags:
+        - traversal
+      summary: Recorrido BFS
+      operationId: bfsTraversal
+
+      responses:
+        "200":
+          description: Recorrido BFS
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TreeNodeDTO'
+
+components:
+
+  responses:
+    NotFound:
+      description: Recurso no encontrado
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Solicitud invalida
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+  schemas:
+
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+
+    TreeNodeDTO:
+      type: object
+
+      properties:
+
+        id:
+          type: integer
+          format: int64
+
+        value:
+          type: string
+
+        children:
+          type: array
+
+          items:
+            $ref: '#/components/schemas/TreeNodeDTO'

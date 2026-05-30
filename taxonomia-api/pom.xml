@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.1</version>
+		<relativePath/>
+	</parent>
+
+	<groupId>com.grupo.taxonomia</groupId>
+	<artifactId>taxonomia-api</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>taxonomia-api</name>
+	<description>API de taxonomía</description>
+
+	<properties>
+		<java.version>17</java.version>
+<<<<<<< HEAD
+
+		<springdoc.version>2.5.0</springdoc.version>
+		<openapi-generator.version>7.6.0</openapi-generator.version>
+=======
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
+	</properties>
+
+	<dependencies>
+
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+<<<<<<< HEAD
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-neo4j</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
+=======
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+<<<<<<< HEAD
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+=======
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		
+		<dependency>
+			<groupId>com.grupo.taxonomia</groupId>
+			<artifactId>tree-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+<<<<<<< HEAD
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc.version}</version>
+		</dependency>
+
+		
+		<dependency>
+			<groupId>org.openapitools</groupId>
+			<artifactId>jackson-databind-nullable</artifactId>
+			<version>0.2.6</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			
+			<plugin>
+				<groupId>org.openapitools</groupId>
+				<artifactId>openapi-generator-maven-plugin</artifactId>
+				<version>${openapi-generator.version}</version>
+
+				<executions>
+					<execution>
+						<id>generate-openapi</id>
+
+						<goals>
+							<goal>generate</goal>
+						</goals>
+
+						<configuration>
+
+							<inputSpec>
+								${project.basedir}/src/main/resources/openapi.yaml
+							</inputSpec>
+
+							<generatorName>spring</generatorName>
+
+							<apiPackage>
+								com.grupo.taxonomia.openapi.api
+							</apiPackage>
+
+							<modelPackage>
+								com.grupo.taxonomia.openapi.model
+							</modelPackage>
+
+							<configOptions>
+								<interfaceOnly>true</interfaceOnly>
+								<useSpringBoot3>true</useSpringBoot3>
+							</configOptions>
+
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			
+=======
+		
+<<<<<<<< HEAD:taxonomia-api/taxonomia-api/pom.xml
+			<!-- MongoDB - Rol C -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
+	</dependencies>
+========
+		<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.5.0</version>
+</dependency>
+</dependencies>
+>>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091:taxonomia-api/pom.xml
+
+	<build>
+		<plugins>
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7f431411b01b3421119b7fe706c8e630a4afb091
+		</plugins>
+	</build>
+
+</project>
