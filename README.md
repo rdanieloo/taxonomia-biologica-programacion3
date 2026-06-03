@@ -10,6 +10,8 @@
 **Videos de Explicacion individal (Cada integrante explica su parte)** 
 Tahly Yuliana Jimenez Boteo (Parte A)
 **Linlk: (https://drive.google.com/file/d/1Aky1z5NWhDhmQQvEa0SEBwEQUDkys2bZ/view?usp=drivesdk)** 
+Carlos Daniel Ramos Morán 0905-23-14141 Parte (C)
+**Linlk: (https://drive.google.com/file/d/1KARc7iDFM1XBaV525-LyJovva03ZPqnh/view?usp=sharing)**
 
 ### 📊 Gestión del Proyecto
 Este proyecto utiliza **Trello** como herramienta de seguimiento y organización del equipo.
