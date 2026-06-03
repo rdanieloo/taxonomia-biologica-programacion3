@@ -6,6 +6,10 @@
 
 > **Proyecto Final de Programación III**  
 > Sistema interactivo para consultar, clasificar y gestionar información sobre la taxonomía biológica de diferentes especies.
+>
+**Videos de Explicacion individal (Cada integrante explica su parte)** 
+Tahly Yuliana Jimenez Boteo (Parte A)
+**Linlk: (https://drive.google.com/file/d/1Aky1z5NWhDhmQQvEa0SEBwEQUDkys2bZ/view?usp=drivesdk)** 
 
 ### 📊 Gestión del Proyecto
 Este proyecto utiliza **Trello** como herramienta de seguimiento y organización del equipo.
